@@ -6,8 +6,11 @@ from flask import Flask, jsonify, render_template
 from flask_caching import Cache
 
 config = {
-    "DEBUG": True,  # some Flask specific configs
+    "DEBUG": (
+        False if os.getenv("ENVIRONMENT") == "production" else True
+    ),  # some Flask specific configs
     "CACHE_TYPE": "SimpleCache",  # Flask-Caching related configs
+    "SECRET_KEY": os.getenv("SECRET_KEY"),
     "CACHE_DEFAULT_TIMEOUT": 300,
 }
 
@@ -32,9 +35,7 @@ def fetch_repo_stats():
         f"https://api.github.com/repos/prithajnath/{repo}/languages" for repo in repos
     ]
     print(f"Fetching stats for {urls}")
-    prefix = "github_pat_"
-    _access_token = os.getenv("GITHUB_ACCESS_TOKEN")
-    access_token = f"{prefix}{_access_token}"
+    access_token = os.getenv("GH_ACCESS_TOKEN")
     for url in urls:
         resp = requests.get(
             url,
