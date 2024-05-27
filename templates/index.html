@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html date-theme="cupcake">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="static/output.css" rel="stylesheet" type="text/css" />
+    <style>
+      body {
+        font-family: "Silkscreen", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+      h1 {
+        font-family: "Silkscreen", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+      }
+
+      .legend {
+        fill: #f8f5f5;
+        font-size: 50px;
+      }
+
+      .tooltip {
+        fill: #ece7e7;
+      }
+      .axisLabel {
+        font-size: 22px;
+        fill: blanchedalmond;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar bg-base-100">
+      <div class="navbar-start">
+        <div class="dropdown">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h7"
+              />
+            </svg>
+          </div>
+          <ul
+            tabindex="0"
+            class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li><a href="/portfolio">Portfolio</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="navbar-center">
+        <a href="/" class="btn btn-ghost text-xl">prithaj.dev</a>
+      </div>
+      <div class="navbar-end"></div>
+    </div>
+    <br />
+    <br />
+    <div>{% block content %}{% endblock %}</div>
+  </body>
+</html>

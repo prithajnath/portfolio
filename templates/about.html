@@ -1,0 +1,131 @@
+{% extends "index.html" %} {% block content %}
+
+<div class="grid grid-rows-2 gap-2 sm:flex sm:justify-center">
+  <div class="card sm:flex-none sm:w-2/5">
+    <div class="radarChart"></div>
+  </div>
+  <div class="card sm:flex-initial sm:w-2/5">
+    <h1>Hi, I'm Prithaj</h1>
+    <p>
+      I'm a software engineer who likes dabbling in everything data. I have
+      spent most of my career building complex ETL pipelines for machine
+      learning models using Python, SQL, Ruby and Apache Airflow. I'm also
+      proficient in writing CI/CD pipelines using GitHub Actions/Gitlab CI,
+      containerizing projects using Docker and Kubernetes, web-scraping using
+      scrapy, Puppeteer, BeautifulSoup and Linux system administration. You can
+      download my resume
+      <a
+        class="badge-primary"
+        href="https://raw.githubusercontent.com/prithajnath/resume/main/prithaj.pdf"
+        >here</a
+      >
+    </p>
+    <br />
+    <h1>Social</h1>
+    <div class="flex-1">
+      <div class="badge badge-accent badge-outline">
+        <a href="https://www.linkedin.com/in/iamprithaj/">LinkedIn</a>
+      </div>
+      <div class="badge badge-accent badge-outline">
+        <a href="https://stackoverflow.com/users/3007613/prithajnath"
+          >StackOverflow</a
+        >
+      </div>
+      <div class="badge badge-accent badge-outline">
+        <a href="https://github.com/prithajnath">GitHub</a>
+      </div>
+    </div>
+    <h1>Experience</h1>
+    <ul class="steps steps-vertical">
+      <li class="step step-error">IXIS Digital: Aug 2017 - May 2019</li>
+      <li class="step step-error">Faraday: May 2019 - June 2022</li>
+      <li class="step step-error">Singuli: June 2022 - June 2024</li>
+      <li data-content="?" class="step">???</li>
+    </ul>
+
+    <h1>Languages</h1>
+    <div class="flex-1">
+      <div class="badge badge-primary badge-outline">Python</div>
+      <div class="badge badge-primary badge-outline">SQL</div>
+      <div class="badge badge-primary badge-outline">JavaScript</div>
+      <div class="badge badge-primary badge-outline">Ruby</div>
+    </div>
+    <h1>Databases</h1>
+    <div class="flex-1">
+      <div class="badge badge-success badge-outline">Postgres</div>
+      <div class="badge badge-success badge-outline">Bigquery</div>
+      <div class="badge badge-success badge-outline">Snowflake</div>
+      <div class="badge badge-success badge-outline">Redshift</div>
+    </div>
+    <h1>DevOps/Cloud</h1>
+    <div class="flex-1">
+      <div class="badge badge-secondary badge-outline">AWS</div>
+      <div class="badge badge-secondary badge-outline">Terraform</div>
+      <div class="badge badge-secondary badge-outline">Docker</div>
+      <div class="badge badge-secondary badge-outline">Kubernetes</div>
+      <div class="badge badge-secondary badge-outline">GCP</div>
+    </div>
+  </div>
+</div>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"
+  charset="utf-8"
+></script>
+<script src="static/radarChart.js"></script>
+<script>
+  (async () => {
+    /* Radar chart design created by Nadieh Bremer - VisualCinnamon.com */
+
+    //////////////////////////////////////////////////////////////
+    //////////////////////// Set-Up //////////////////////////////
+    //////////////////////////////////////////////////////////////
+
+    var margin = { top: 100, right: 100, bottom: 100, left: 100 },
+      width =
+        Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
+      height = Math.min(
+        width,
+        window.innerHeight - margin.top - margin.bottom - 20
+      );
+
+    //////////////////////////////////////////////////////////////
+    ////////////////////////// Data //////////////////////////////
+    //////////////////////////////////////////////////////////////
+
+    const data = [];
+    const githubStatsResponse = await fetch("/github");
+    const githubStats = await githubStatsResponse.json();
+    githubStats.forEach(function (repo) {
+      const transformedRepoStats = [];
+      for (const [key, value] of Object.entries(repo)) {
+        transformedRepoStats.push({ axis: key, value: value });
+      }
+      data.push(transformedRepoStats);
+    });
+
+    var color = d3.scale
+      .ordinal()
+      .range([
+        "#EDC951",
+        "#CC333F",
+        "#00A0B0",
+        "#4103fc",
+        "#fc0373",
+        "#c2fc03",
+      ]);
+
+    var radarChartOptions = {
+      w: width,
+      h: height,
+      margin: margin,
+      maxValue: 0.5,
+      levels: 5,
+      roundStrokes: true,
+      color: color,
+    };
+    //Call function to draw the Radar chart
+    RadarChart(".radarChart", data, radarChartOptions);
+  })();
+</script>
+
+{% endblock %}
