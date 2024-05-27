@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+
+
+npx tailwindcss -i ./src/input.css -o ./static/output.css
+
 CONCURRENCY=$(expr 2 \* $(nproc) + 1)
 gunicorn -w  $CONCURRENCY \
     --worker-class=gevent \

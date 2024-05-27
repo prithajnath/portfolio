@@ -24,6 +24,15 @@ COPY . .
 
 RUN pip install -r requirements.txt
 
+# INSTALL NODE
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x -o nodesource_setup.sh
+RUN bash nodesource_setup.sh
+RUN apt install -y nodejs
+
+# INSTALL NODE DEPENDENCIES
+RUN npm i
+
+
 EXPOSE 9000
 
 ENTRYPOINT ["./entrypoint.sh"]
