@@ -32,7 +32,9 @@ def fetch_repo_stats():
         f"https://api.github.com/repos/prithajnath/{repo}/languages" for repo in repos
     ]
     print(f"Fetching stats for {urls}")
-    access_token = os.getenv("GITHUB_ACCESS_TOKEN")
+    prefix = "github_pat_"
+    _access_token = os.getenv("GITHUB_ACCESS_TOKEN")
+    access_token = f"{prefix}{_access_token}"
     for url in urls:
         resp = requests.get(
             url,
