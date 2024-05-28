@@ -43,7 +43,7 @@ tag = MetaTag(
 )
 
 
-@cache.cached(timeout=50)
+@cache.cached(timeout=200)
 def fetch_repo_stats():
     data = []
     repos = ["nytscraper", "FeedMeWhatever", "my-secret-santa", "HackerRank"]
