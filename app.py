@@ -78,7 +78,7 @@ def fetch_repo_stats():
                     scaled_loc = gauss(mu=avg_loc, sigma=stdev_loc)
                 else:
                     scaled_loc = gauss(mu=500, sigma=120)
-                stats[language] = scaled_loc / total_loc
+                stats[language] = abs(scaled_loc) / total_loc
 
         data.append(stats)
 
