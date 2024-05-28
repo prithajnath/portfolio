@@ -3,5 +3,5 @@
 set -euo pipefail
 
 echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-docker build -t prithaj-portfolio .
-docker push prithaj-portfolio
+docker build -t iamprithaj/prithaj-portfolio .
+docker push iamprithaj/prithaj-portfolio
