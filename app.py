@@ -22,7 +22,7 @@ app.config.from_mapping(config)
 cache = Cache(app)
 logger = logging.getLogger()
 
-RADIAL_CHART_AXES = ["Python", "JavaScript", "HTML"]
+RADIAL_CHART_AXES = ["Python", "JavaScript", "Ruby", "HTML"]
 
 
 @dataclass
@@ -46,14 +46,7 @@ tag = MetaTag(
 @cache.cached(timeout=50)
 def fetch_repo_stats():
     data = []
-    repos = [
-        "my-secret-santa",
-        "prithajnath.github.io",
-        "mmc",
-        "fnalgo",
-        "nytscraper",
-        # "homebash",
-    ]
+    repos = ["nytscraper", "FeedMeWhatever", "my-secret-santa", "HackerRank"]
     urls = [
         f"https://api.github.com/repos/prithajnath/{repo}/languages" for repo in repos
     ]
