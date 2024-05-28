@@ -1,5 +1,7 @@
 import logging
 import os
+from random import gauss
+from statistics import mean, stdev
 
 import requests
 from flask import Flask, jsonify, render_template
@@ -19,6 +21,8 @@ app.config.from_mapping(config)
 cache = Cache(app)
 logger = logging.getLogger()
 
+RADIAL_CHART_AXES = ["Python", "JavaScript", "HTML"]
+
 
 @cache.cached(timeout=50)
 def fetch_repo_stats():
@@ -27,9 +31,9 @@ def fetch_repo_stats():
         "my-secret-santa",
         "prithajnath.github.io",
         "mmc",
-        "anc",
         "fnalgo",
-        "homebash",
+        "nytscraper",
+        # "homebash",
     ]
     urls = [
         f"https://api.github.com/repos/prithajnath/{repo}/languages" for repo in repos
@@ -46,16 +50,26 @@ def fetch_repo_stats():
         )
 
         languages = resp.json()
+        max_loc = max(languages.values())
         total_loc = sum([v for k, v in languages.items()])
-        stats = {language: loc / total_loc for language, loc in languages.items()}
+        stats = {}
+
+        for language in RADIAL_CHART_AXES:
+            if loc := languages.get(language):
+                value = loc / total_loc
+                stats[language] = value
+            else:
+                if len(languages) > 1:
+                    avg_loc = mean(languages.values())
+                    stdev_loc = stdev(languages.values())
+
+                    scaled_loc = gauss(mu=avg_loc, sigma=stdev_loc)
+                else:
+                    scaled_loc = gauss(mu=500, sigma=120)
+                stats[language] = scaled_loc / total_loc
+
         data.append(stats)
-    s = set()
-    for repo in data:
-        s = s.union(repo.keys())
-    axis = list(s)
-    for repo in data:
-        for key in axis:
-            repo[key] = repo.get(key, 0.0)
+
     return data
 
 
