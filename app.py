@@ -33,7 +33,7 @@ class MetaTag:
     description: str
 
 
-description = """I'm a software engineer who likes dabbling in everything data. I have spent most of my career building complex ETL pipelines for machine learning models using Python, SQL, Ruby and Apache Airflow. I'm also proficient in Linux system administration, terraforming resources on AWS, writing CI/CD pipelines using GitHub Actions/Gitlab CI, containerizing projects using Docker and Kubernetes, web-scraping using scrapy, Puppeteer and BeautifulSoup."""
+description = """Hi, my name is Prithaj and I'm a software engineer who likes dabbling in everything data. I have spent most of my career building complex ETL pipelines for machine learning models using Python, SQL, Ruby and Apache Airflow. I'm also proficient in Linux system administration, terraforming resources on AWS, writing CI/CD pipelines using GitHub Actions/Gitlab CI, containerizing projects using Docker and Kubernetes, web-scraping using scrapy, Puppeteer and BeautifulSoup."""
 
 tag = MetaTag(
     image="https://res.cloudinary.com/dzmp7xptn/image/upload/v1716908380/radial_s0kfqq.png",
