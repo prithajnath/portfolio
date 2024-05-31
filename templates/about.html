@@ -50,7 +50,29 @@
       to learn more about that position
     </p>
     <ul class="steps steps-vertical">
-      <li class="step step-error">IXIS Digital: Aug 2017 - May 2019</li>
+      <li class="step step-error">
+        <label
+          for="ixis-drawer"
+          class="flex-1 drawer-button"
+          style="cursor: pointer"
+        >
+          IXIS Digital: Aug 2017 - May 2019
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15"
+            />
+          </svg>
+        </label>
+      </li>
       <li class="step step-error">
         <label
           for="fdy-drawer"
@@ -99,6 +121,50 @@
       </li>
       <li data-content="?" class="step">???</li>
     </ul>
+
+    <div class="drawer drawer-end">
+      <input id="ixis-drawer" type="checkbox" class="drawer-toggle" />
+      <div class="drawer-content">
+        <!-- Page content here -->
+      </div>
+      <div class="drawer-side justify-center">
+        <label
+          for="ixis-drawer"
+          aria-label="close sidebar"
+          class="drawer-overlay"
+        ></label>
+        <ul class="menu p-4 w-80 min-h-full bg-base-200">
+          <!-- Sidebar content here -->
+
+          <img
+            style="width: 30%; margin-left: 30%"
+            src="https://assets-global.website-files.com/6458c6bac51db91986664ebb/647893f4af69e9b944f96b1b_logo-color.svg"
+          />
+          <br />
+          <p>IXIS is a platform for extracting insights from e-commerce data</p>
+          <br />
+          <li>
+            I built internal REST APIs to power analytics dashboards and
+            performed data analysis using R and SQL. I also implemented CI/CD
+            pipelines on bare metal servers using Docker and Gitlab CI
+          </li>
+          <br />
+          <a href="https://www.ixisdigital.com/"
+            ><button class="btn btn-active btn-info">Visit website</button></a
+          >
+          <br />
+          <li>Tech stack used</li>
+          <span class="flex-1">
+            <span class="badge badge-info badge-outline">Python</span>
+            <span class="badge badge-info badge-outline">R</span>
+            <span class="badge badge-info badge-outline">Django</span>
+            <span class="badge badge-info badge-outline">SQL</span>
+            <span class="badge badge-info badge-outline">Postgres</span>
+            <span class="badge badge-info badge-outline">Gitlab CI</span>
+          </span>
+        </ul>
+      </div>
+    </div>
 
     <div class="drawer drawer-end">
       <input id="fdy-drawer" type="checkbox" class="drawer-toggle" />
@@ -202,19 +268,19 @@
           </li>
           <br />
           <a href="https://singuli.co"
-            ><button class="btn btn-primary">Visit website</button></a
+            ><button class="btn btn-secondary">Visit website</button></a
           >
           <br />
           <li>Tech stack used</li>
           <span class="flex-1">
-            <span class="badge badge-primary badge-outline">Python</span>
-            <span class="badge badge-primary badge-outline">Pandas</span>
-            <span class="badge badge-primary badge-outline">NumPy</span>
-            <span class="badge badge-primary badge-outline">Flask</span>
-            <span class="badge badge-primary badge-outline">SQLAlchemy</span>
-            <span class="badge badge-primary badge-outline">PostgreSQL</span>
-            <span class="badge badge-primary badge-outline">Redshift</span>
-            <span class="badge badge-primary badge-outline"
+            <span class="badge badge-secondary badge-outline">Python</span>
+            <span class="badge badge-secondary badge-outline">Pandas</span>
+            <span class="badge badge-secondary badge-outline">NumPy</span>
+            <span class="badge badge-secondary badge-outline">Flask</span>
+            <span class="badge badge-secondary badge-outline">SQLAlchemy</span>
+            <span class="badge badge-secondary badge-outline">PostgreSQL</span>
+            <span class="badge badge-secondary badge-outline">Redshift</span>
+            <span class="badge badge-secondary badge-outline"
               >Apache Airflow</span
             >
           </span>
